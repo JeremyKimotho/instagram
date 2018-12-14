@@ -1,5 +1,6 @@
 {% load bootstrap3 %}
 {% load staticfiles %}
+{% load static %}
 <!DOCTYPE html>
 <html>
   <head>
@@ -14,10 +15,11 @@
     {% bootstrap_css %}
     {% endblock %}
   </head>
-  <body>
-    {%  include 'authentication/login.html' %}
+<body style='background-color:#F8F9F9;'>
+    {%  include './login.html' %}
     
-    {% block content %} {%endblock%}
+    {% block content %} 
+    {% endblock %}
     
     {% block scripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

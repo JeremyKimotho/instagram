@@ -3,6 +3,7 @@
   height:100px;
   border-radius:0px;
   border:none;
+  width:100%;
 }
 
 #icon{
@@ -13,4 +14,5 @@
 
 #login {
   margin-top:20px;
+  margin-right:100px;
 }

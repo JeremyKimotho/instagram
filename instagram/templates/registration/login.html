@@ -15,7 +15,7 @@
         <div class="navbar-header">
           <img id='icon' src="../../../media/logo.png" alt="de icon">
         </div>
-        <div id='login' class="col-sm-4">
+        <div class='navbar-right' id='login' class="col-sm-4">
           <form class='navbar-form navbar-right' action="{% url 'auth_login' %}" method="post">
             {% csrf_token %}
             <div class="form-group">
