@@ -1,0 +1,11 @@
+#main{
+  background-color:white;
+  height:100px;
+  border-radius:0px;
+}
+
+#icon{
+  width:65%;
+  height:65%;
+  margin-top:10px;
+}
