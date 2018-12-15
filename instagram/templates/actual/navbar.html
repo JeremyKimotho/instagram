@@ -13,7 +13,7 @@
     <nav id='main' class='navbar navbar-inverse'>
       <div class="container-fluid">
         <div class="navbar-header">
-          <img id='icon' src="../../../media/logo.png" alt="de icon">
+          <a href="{% url 'home' %}"><img id='icon' src="../../../media/logo.png" alt="de icon"></a>
         </div>
         <div id='search' class="col-sm-4">
           <form id='search' class='navbar-right' class='navbar-form' role='search'>
@@ -29,7 +29,7 @@
           <button type='submit' class='gicons'><span class="glyphicon glyphicon-pencil"></span></button>
           <button type='submit' class='gicons'><span class="glyphicon glyphicon-fire"></span></button>
           <button type='submit' class='gicons'><span class="glyphicon glyphicon-user"></span></button>
-          <button type='submit' class='gicons'><span class="glyphicon glyphicon-log-out"></span></button>
+          <button type='submit' class='gicons'><a href="/logout"><span class="glyphicon glyphicon-log-out"></span></a></button>
         </div>
       </div>
     </nav>
