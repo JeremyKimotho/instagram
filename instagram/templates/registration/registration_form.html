@@ -1,48 +1,31 @@
-{% extends './base.html' %}
+{% extends 'registration/base.html' %}
 {% load bootstrap3 %}
 
 {% block content %}
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
-      <img id='login-image' class='img-responsive' src="../../../media/login.png" alt="login pic">
-    </div>
-    <div id='register' class='col-md-6' class="pull-right">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      {% if form.errors %}
+      <p>Some information may be incorrect</p>
+      {% endif %}
       <div class="panel panel-default">
         <div class="panel-heading">
           <h3 class='text-center'>Sign Up</h3>
         </div>
         <div class="panel-body">
-          <form action="{% url 'registration_register' %}" method='post'>
+          <form action="/accounts/register/" method='post'>
             {% csrf_token %}
+            {% bootstrap_form form %}
             <div class="form-group">
-              <input type="text" class='form-control' name='first_name' placeholder='First Name'>
+              <input type="submit" class='btn btn-primary btn-sm' value='Sign Up'>
             </div>
-            <div class="form-group">
-              <input type="text" class='form-control' name='last_name' placeholder='Surname'>
-            </div>
-            <div class="form-group">
-              <input type="text" class='form-control' name='email' placeholder='Email'>
-            </div>
-            <div class="form-group">
-              <input type="text" class='form-control' name='username' placeholder='Username'>
-            </div>
-            <div class="form-group">
-              <input type="text" class='form-control' name='password' placeholder='Password'>
-            </div>
-            <div class="form-group">
-              <input type="text" class='form-control' name='password_confirm' placeholder='Password Confirm'>
-            </div>
-            <div class="text-center">
-              <button type='submit' class='btn btn-default'>Register</button>
-            </div>
+            <input type="hidden" name="next" value='{{next}}'>
           </form>
-          {% if form.errors %}
-          <p class='text-center' style='color:red;'>Some information may be incorrect</p>
-          {% endif %}
         </div>
       </div>
     </div>
+    <div class="col-md-4"></div>
   </div>
 </div>
 {% endblock %}

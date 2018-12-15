@@ -4,7 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns=[
-  url('^$', views.welcome)
+  url('^$', views.default)
 ]
 
 if settings.DEBUG:
