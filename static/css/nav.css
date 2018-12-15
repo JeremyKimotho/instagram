@@ -21,3 +21,15 @@
   margin-top:17px;
   width:300px;
 }
+
+.action-icons{
+  margin-top:30px;
+  margin-right:20px;
+}
+
+.gicons{
+  font-size:25px;
+  background-color:white;
+  border:none;
+  padding-left:40px;
+}
