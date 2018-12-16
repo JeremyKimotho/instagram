@@ -6,6 +6,7 @@ class Profile(models.Model):
   user = models.OneToOneField(User, on_delete=models.CASCADE)
   bio = models.TextField(max_length=500, blank=True)
   photo = models.ImageField(upload_to='photos/')
+  email_confirmed = models.BooleanField(default=False)
 
 class Image(models.Model):
   image = models.ImageField(upload_to='photos/')

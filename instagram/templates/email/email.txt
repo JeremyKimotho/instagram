@@ -1,0 +1,3 @@
+Hello {{name}}
+
+Welcome to the Instagram family. Browse photos, follow people, and have a good time doing it!
