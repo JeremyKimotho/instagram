@@ -13,7 +13,8 @@ from django.contrib.auth.models import User
 
 @login_required(login_url='/accounts/register')
 def default(request):
-  return render(request, 'actual/home.html')
+  posts = Image.objects.all()
+  return render(request, 'actual/home.html', {'posts':posts})
 
 def signup(request):
   if request.method == 'POST':
