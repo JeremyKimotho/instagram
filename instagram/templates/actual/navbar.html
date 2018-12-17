@@ -16,7 +16,7 @@
           <a href="{% url 'home' %}"><img id='icon' src="../../../media/logo.png" alt="de icon"></a>
         </div>
         <div id='search' class="col-sm-4">
-          <form id='search' class='navbar-right' class='navbar-form' role='search'>
+          <form id='search' class='navbar-right' class='navbar-form' role='search' action="{% url 'search' %}">
             <div class="input-group">
               <input type="text" class='form-control' placeholder="Search User" name='user'>
               <div class="input-group-btn">
