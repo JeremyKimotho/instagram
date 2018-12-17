@@ -2,10 +2,10 @@
 {% load bootstrap4 %}
 
 {% block content %}
-<div id='post' class="container">
+{% for post in posts %}
+<div style='padding-top:100px;' id='post' class="container">
   <div class="row">
     <div style='box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);background-color:white;margin:auto;width:65%;' class="card" style="width:800px">
-      {% for post in posts %}
       <div style='padding-left:10px;'>
         {% if post.profile.photo %}
         <img src="{{post.profile.photo.url}}" style='border-radius:50%;' alt="pp"><h2 style='font-size:25px;' class='card-header'>{{post.profile}}</h2>
