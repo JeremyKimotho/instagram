@@ -30,7 +30,7 @@ class Image(models.Model):
   image_name = models.CharField(max_length = 60)
   image_caption = models.CharField(max_length = 60)
   posted_at = models.DateTimeField(auto_now_add=True)
-  profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+  profile = models.ForeignKey(User, on_delete=models.CASCADE)
 
   def save_image(self):
     self.save()
