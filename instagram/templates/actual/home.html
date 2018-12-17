@@ -15,6 +15,24 @@
       </div>
       <div class="card-body">
         <img class='img-responsive' style="padding-top:10px;width:100%" class="card-img-top" src="{{post.image.url}}" alt="post">
+        <input type="button" id="like" name="{{post.slug}}" value="Like"/>
+        <script>
+          $('#like').click(function(){
+            $.ajax({
+              type:'POST',
+              url: "{% url 'like' %}",
+              data: {'slug': $(this).attr('name')},
+              dataType: 'json',
+              success: function(response){
+                alert('Likes Worked');
+                alert('Likes Count ' + response.likes_count);
+              },
+              error: function(rs, e){
+                alert(rs.responseText);
+              }
+            });
+          })
+        </script>
         <h5 style='padding-left:5px;'>{{post.image_caption}}</h5>
         <h6 style='padding-left:5px;'>{{post.posted_at}}</h6>
       </div>

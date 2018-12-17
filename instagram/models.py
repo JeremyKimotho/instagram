@@ -1,6 +1,8 @@
 from django.db import models
 import datetime as dt
 from django.contrib.auth.models import User
+from django.template.defaultfilters import slugify
+
 
 class Profile(models.Model):
   user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
@@ -30,10 +32,13 @@ class Image(models.Model):
   image_name = models.CharField(max_length = 60)
   image_caption = models.CharField(max_length = 60)
   posted_at = models.DateTimeField(auto_now_add=True)
+  likes = models.ManyToManyField(User, blank=True, related_name='likes')
+  slug = models.SlugField()
   profile = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
 
   def save_image(self):
-    self.save()
+    self.slug = slugify(self.image_name)
+    return super(Image, self).save()
 
   def delete_image(self):
     self.delete()
@@ -46,6 +51,9 @@ class Image(models.Model):
   def get_images(cls):
     images = cls.objects.all()
     return images
+
+  def get_likes(self):
+    return self.likes.count()
 
   def __str__(self):
     return self.image.url

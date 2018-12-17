@@ -13,4 +13,4 @@ class SignUpForm(UserCreationForm):
 class NewPostForm(forms.ModelForm):
   class Meta:
     model = Image
-    exclude=['profile', 'posted_at']
+    exclude=['likes', 'slug','profile', 'posted_at']

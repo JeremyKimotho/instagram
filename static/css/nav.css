@@ -55,3 +55,33 @@
 :-ms-input-placeholder {
   text-align: center;
 }
+
+@media screen and (max-width: 600px) {
+  #icon {
+    width:25%;
+    height:25%;
+    margin-top:0px;
+  }
+
+  #logo{
+    width:50%;
+    height:50%;
+  }
+
+  #login-image{
+    display:none;
+  }
+
+  #register{
+    margin-top:150px;
+  }
+
+  .panel{
+    width:65%;
+  }
+
+  .navbar-right{
+    display:inline-flex;
+  }
+}
+

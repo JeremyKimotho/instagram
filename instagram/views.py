@@ -1,5 +1,6 @@
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
 from django.contrib.sites.shortcuts import get_current_site
 from django.shortcuts import render, redirect, render_to_response, get_object_or_404
 from django.utils.encoding import force_bytes, force_text
@@ -64,7 +65,7 @@ def new_post(request):
     if form.is_valid():
       post = form.save(commit=False)
       post.profile = current_user
-      post.save()
+      post.save_image()
     return redirect('home')
   else:
     form=NewPostForm()
@@ -85,3 +86,20 @@ def profile(request, id):
   profile = get_object_or_404(User, pk=id)
   images = profile.posts.all()
   return render(request, 'actual/profile.html', {'profile':profile, 'images':images})
+
+@login_required(login_url='/accounts/register/')
+@require_POST
+def like(request):
+  print('The first part')
+  if request.method == 'POST':
+    user = request.user
+    slug = request.POST.get('slug', None)
+    post = get_object_or_404(Image, slug=slug)
+
+    if post.likes.filter(id=user.id).exists():
+      post.likes.remove(user)
+    else:
+      post.likes.add(user)
+
+  info = {'likes_count':post.get_likes()}
+  return HttpResponse(json.dumps(info), content_type='application/json')
