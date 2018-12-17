@@ -26,7 +26,7 @@
   {% if users %}
   {% for user in users %}
   <div class="grid-item">
-    <h2>{{user.user}}</h2>
+    <h2><a href="{% url 'profile' id=user.id%}">{{user.user}}</a></h2>
   </div>
 </div>
 {% endfor %}
