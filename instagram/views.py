@@ -84,4 +84,4 @@ def search(request):
 def profile(request, id):
   profile = get_object_or_404(User, pk=id)
   images = profile.posts.all()
-  return render(request, 'actual/profile.html', locals())
+  return render(request, 'actual/profile.html', {'profile':profile, 'images':images})

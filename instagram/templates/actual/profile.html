@@ -1,5 +1,25 @@
 {% extends './base.html' %}
 
 {% block content %}
-<h2>I'm the profile page</h2>
+<div style='margin-left:auto;width:50%;border:black;' class="container">
+  <div class="row">
+    <div class="card">
+      <div>
+        <img style='width:25%;height:25%;border-radius:50%;' src="../../../media/profile.jpg" alt="profile pic"><span style='padding-left:15px;font-size:50px;'>{{profile.username}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+{% for image in images %}
+<div style='padding-top:45px;border:black;' class="container">
+  <div class="row">
+    <div style='box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);margin:auto;width:85%;' class="card">
+      <img class='img-responsive' src="{{image}}" alt="Image">
+    </div>
+  </div>
+</div>
+{% endfor %}
 {% endblock %}
