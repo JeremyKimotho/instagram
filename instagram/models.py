@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
   user = models.OneToOneField(User, on_delete=models.CASCADE)
   bio = models.TextField(default='Single and ready to mingle', max_length=500, blank=True)
-  photo = models.ImageField(blank=True, upload_to='photos/')
+  photo = models.ImageField(default='profile.jpg', upload_to='photos/')
 
   def save_profile(self):
     self.save()
