@@ -25,7 +25,7 @@ class Profile(models.Model):
     return self.user
 
 class Image(models.Model):
-  image = models.ImageField(upload_to='photos/')
+  image = models.ImageField(blank=True, upload_to='photos/')
   image_name = models.CharField(max_length = 60)
   image_caption = models.CharField(max_length = 60)
   posted_at = models.DateTimeField(auto_now_add=True)

@@ -14,7 +14,7 @@ from .models import Image, Profile
 
 @login_required(login_url='/accounts/register')
 def default(request):
-  posts = Image.objects.all()
+  posts = Image.get_images()
   return render(request, 'actual/home.html', {'posts':posts})
 
 def signup(request):
