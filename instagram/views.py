@@ -1,7 +1,7 @@
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.sites.shortcuts import get_current_site
-from django.shortcuts import render, redirect, render_to_response
+from django.shortcuts import render, redirect, render_to_response, get_object_or_404
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode
 from django.template.loader import render_to_string
@@ -10,6 +10,7 @@ from .tokens import account_activation_token
 from django.contrib.auth import login
 from django.contrib.auth.models import User
 from .models import Image, Profile
+from django.core.urlresolvers import reverse
 
 
 @login_required(login_url='/accounts/register')
@@ -79,6 +80,8 @@ def search(request):
   else: 
     return render(request, 'actual/search.html')
 
-@login_required(login_url='accounts/register/')
-def profile(request):
-  pass
+@login_required(login_url='/accounts/register/')
+def profile(request, id):
+  profile = get_object_or_404(User, pk=id)
+  images = profile.posts.all()
+  return render(request, 'actual/profile.html', locals())

@@ -3,7 +3,7 @@ import datetime as dt
 from django.contrib.auth.models import User
 
 class Profile(models.Model):
-  user = models.OneToOneField(User, on_delete=models.CASCADE)
+  user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
   bio = models.TextField(default='Single and ready to mingle', max_length=500, blank=True)
   photo = models.ImageField(default='profile.jpg', upload_to='photos/')
 
@@ -30,7 +30,7 @@ class Image(models.Model):
   image_name = models.CharField(max_length = 60)
   image_caption = models.CharField(max_length = 60)
   posted_at = models.DateTimeField(auto_now_add=True)
-  profile = models.ForeignKey(User, on_delete=models.CASCADE)
+  profile = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
 
   def save_image(self):
     self.save()

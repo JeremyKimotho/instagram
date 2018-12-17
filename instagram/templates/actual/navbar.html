@@ -28,7 +28,7 @@
         <div class='action-icons' style="position: absolute; right: 0;">
           <button type='submit' class='gicons'><a href="{% url 'new_post' %}"><span class="glyphicon glyphicon-pencil"></span></a></button>
           <button type='submit' class='gicons'><a href="{% url 'home' %}"><span class="glyphicon glyphicon-fire"></span></a></button>
-          <button type='submit' class='gicons'><a href="{% url 'profile' %}"><span class="glyphicon glyphicon-user"></span></a></button>
+          <button type='submit' class='gicons'><a href="{% url 'profile' id=request.user.id %}"><span class="glyphicon glyphicon-user"></span></a></button>
           <button type='submit' class='gicons'><a href="/logout"><span class="glyphicon glyphicon-log-out"></span></a></button>
         </div>
       </div>
