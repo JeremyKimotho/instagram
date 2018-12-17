@@ -69,6 +69,7 @@ def new_post(request):
     form=NewPostForm()
   return render(request, 'actual/new_post.html', {'form': form})
 
+@login_required(login_url='/accounts/register/')
 def search(request):
   if 'user' in request.GET and request.GET['user']:
     search_term = request.GET.get('user')
@@ -77,3 +78,7 @@ def search(request):
 
   else: 
     return render(request, 'actual/search.html')
+
+@login_required(login_url='accounts/register/')
+def profile(request):
+  pass
