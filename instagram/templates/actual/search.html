@@ -5,8 +5,30 @@
 <div class="container">
   <div class="row">
     {% if users %}
-    <h2>Found {{users|length}} from your search</h2>
+    <h2 class='text-center'>Found {{users|length}} from your search</h2>
     {% else %}
+    <h2 class='text-center'>There are no such users. You will be directed to the main page in <span id="counter">7</span></h2>
+    <script>
+      setInterval(function () {
+        var div = document.querySelector("#counter");
+        var count = div.textContent * 1 - 1;
+        div.textContent = count;
+        if (count <= 0) {
+          window.location.replace("{% url 'home' %}");
+        }
+      }, 1000);
+    </script>
+    {% endif %}</h2>
   </div>
 </div>
+
+<div class="grid">
+  {% if users %}
+  {% for user in users %}
+  <div class="grid-item">
+    <h2>{{user.user}}</h2>
+  </div>
+</div>
+{% endfor %}
+{% endif %}
 {% endblock %}
