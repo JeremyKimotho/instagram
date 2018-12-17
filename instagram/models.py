@@ -23,7 +23,7 @@ class Profile(models.Model):
     return profile
 
   def __str__(self):
-    return self.bio
+    return self.user.username
 
 class Image(models.Model):
   image = models.ImageField(blank=True, upload_to='photos/')

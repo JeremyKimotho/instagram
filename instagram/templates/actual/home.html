@@ -1,14 +1,19 @@
 {% extends './base.html' %}
+{% load bootstrap4 %}
 
 {% block content %}
 {% for post in posts %}
-<div class="container">
-  <div class="row">
-    <img src="{{post.image}}" alt="post">
-    <h1>{{post.image_name}}</h1>
-    <h3>{{post.image_caption}}</h3>
-    <h3>{{post.posted_at}}</h3>
-    <h3>{{post.profile}}</h3>
+<div style='border:black;' class="card">
+  <div class="card-header">
+    {{post.profile}}
+  </div>
+  <div class="card-body">
+    <img src="{{post.image.url}}" alt="post">
+    <h5>{{post.image_caption}}</h5>
+    <h6>{{post.posted_at}}</h6>
+  </div>
+  <div class="card-footer">
+    <!-- comments section -->
   </div>
 </div>
 {% endfor %}
