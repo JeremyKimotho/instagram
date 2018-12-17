@@ -1,0 +1,12 @@
+{% extends './base.html' %}
+
+{% block content %}
+{% block.super %}
+<div class="container">
+  <div class="row">
+    {% if users %}
+    <h2>Found {{users|length}} from your search</h2>
+    {% else %}
+  </div>
+</div>
+{% endblock %}
