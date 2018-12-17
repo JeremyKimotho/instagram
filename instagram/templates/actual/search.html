@@ -1,13 +1,13 @@
 {% extends './base.html' %}
 
 {% block content %}
-{% block.super %}
+{{block.super}}
 <div class="container">
   <div class="row">
     {% if users %}
     <h2 class='text-center'>Found {{users|length}} from your search</h2>
     {% else %}
-    <h2 class='text-center'>There are no such users. You will be directed to the main page in <span id="counter">7</span></h2>
+    <h2 class='text-center'>There are no such users. You will be directed to the main page in <span id="counter">5</span></h2>
     <script>
       setInterval(function () {
         var div = document.querySelector("#counter");

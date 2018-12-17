@@ -19,10 +19,11 @@ class Profile(models.Model):
 
   @classmethod
   def search_profile(cls, search):
-    profile = cls.objects.filter(user__user__icontains=search)
+    profile = cls.objects.filter(user__username__icontains=search)
+    return profile
 
   def __str__(self):
-    return self.user
+    return self.bio
 
 class Image(models.Model):
   image = models.ImageField(blank=True, upload_to='photos/')
@@ -45,5 +46,8 @@ class Image(models.Model):
   def get_images(cls):
     images = cls.objects.all()
     return images
+
+  def __str__(self):
+    return self.image.url
 
 
