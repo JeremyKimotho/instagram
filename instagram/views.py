@@ -1,14 +1,15 @@
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.sites.shortcuts import get_current_site
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render_to_response
 from django.utils.encoding import force_bytes, force_text
 from django.utils.http import urlsafe_base64_encode
 from django.template.loader import render_to_string
-from .forms import SignUpForm
+from .forms import SignUpForm, NewPostForm
 from .tokens import account_activation_token
 from django.contrib.auth import login
 from django.contrib.auth.models import User
+from .models import Image, Profile
 
 
 @login_required(login_url='/accounts/register')
@@ -54,15 +55,16 @@ def activate(request, uidb64, token):
   else:
     return render(request, 'account_activation_invalid.html')
 
+@login_required(login_url='/accounts/register/')
 def new_post(request):
-  current_user == request.user
+  current_user = request.user
   if request.method == 'POST':
-    form = NewPostForm(request.POST, request.FILES)
+    form=NewPostForm(request.POST, request.FILES)
     if form.is_valid():
       post = form.save(commit=False)
       post.profile = current_user
       post.save()
-      return redirect('home')
-    else:
-      form = NewPostForm()
-    return render(request, 'new_post.html', {'form':form})
+    return redirect('home')
+  else:
+    form=NewPostForm()
+  return render(request, 'actual/new_post.html', {'form': form})
